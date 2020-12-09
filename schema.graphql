@@ -3,7 +3,7 @@ type Proposal @entity {
   placeBlockNumber: String!
   status: Int! 
   proposer: Bytes! # address
-  timeCommitted: String!
+  timeCommitted: BigInt!
   admin: Bytes # address
-  timeAdmin: String
+  timeAdmin: BigInt
 }

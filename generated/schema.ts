@@ -69,13 +69,13 @@ export class Proposal extends Entity {
     this.set("proposer", Value.fromBytes(value));
   }
 
-  get timeCommitted(): string {
+  get timeCommitted(): BigInt {
     let value = this.get("timeCommitted");
-    return value.toString();
+    return value.toBigInt();
   }
 
-  set timeCommitted(value: string) {
-    this.set("timeCommitted", Value.fromString(value));
+  set timeCommitted(value: BigInt) {
+    this.set("timeCommitted", Value.fromBigInt(value));
   }
 
   get admin(): Bytes | null {
@@ -95,20 +95,20 @@ export class Proposal extends Entity {
     }
   }
 
-  get timeAdmin(): string | null {
+  get timeAdmin(): BigInt | null {
     let value = this.get("timeAdmin");
     if (value === null) {
       return null;
     } else {
-      return value.toString();
+      return value.toBigInt();
     }
   }
 
-  set timeAdmin(value: string | null) {
+  set timeAdmin(value: BigInt | null) {
     if (value === null) {
       this.unset("timeAdmin");
     } else {
-      this.set("timeAdmin", Value.fromString(value as string));
+      this.set("timeAdmin", Value.fromBigInt(value as BigInt));
     }
   }
 }
