@@ -12,6 +12,7 @@ export function handleApproved(event: Approved): void {
   let proposal = Proposal.load(id)
   if (proposal != null) {
     proposal.status = 1;
+    proposal.admin = event.params.caller;
     proposal.timeAdmin = event.block.timestamp;
     proposal.save();
   }
@@ -31,6 +32,7 @@ export function handleRejected(event: Rejected): void {
   let proposal = Proposal.load(id)
   if (proposal != null) {
     proposal.status = 2;
+    proposal.admin = event.params.caller;
     proposal.timeAdmin = event.block.timestamp;
     proposal.save();
   }
