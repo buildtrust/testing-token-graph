@@ -1,8 +1,16 @@
 [
   {
     "inputs": [
-      { "internalType": "string", "name": "name", "type": "string" },
-      { "internalType": "string", "name": "symbol", "type": "string" }
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "symbol",
+        "type": "string"
+      }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
@@ -37,9 +45,9 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
+        "internalType": "bytes32",
         "name": "commit",
-        "type": "uint256"
+        "type": "bytes32"
       },
       {
         "indexed": true,
@@ -56,9 +64,27 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "commitId",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "commit",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint40",
+        "name": "placeBlockNumber",
+        "type": "uint40"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum TestingToken.Status",
+        "name": "status",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "proposer",
+        "type": "address"
       }
     ],
     "name": "Commit",
@@ -126,9 +152,9 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "uint256",
+        "internalType": "bytes32",
         "name": "commit",
-        "type": "uint256"
+        "type": "bytes32"
       },
       {
         "indexed": true,
@@ -168,56 +194,116 @@
   {
     "inputs": [],
     "name": "ADMIN_REWARD_AMOUNT",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "PROPOSAL_REWARD_AMOUNT",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "owner", "type": "address" },
-      { "internalType": "address", "name": "spender", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      }
     ],
     "name": "allowance",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "spender", "type": "address" },
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "approve",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
     ],
     "name": "balanceOf",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "decimals",
-    "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }],
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "spender", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
       {
         "internalType": "uint256",
         "name": "subtractedValue",
@@ -225,63 +311,132 @@
       }
     ],
     "name": "decreaseAllowance",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "getAdminCount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "index", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
     ],
     "name": "getMember",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "spender", "type": "address" },
-      { "internalType": "uint256", "name": "addedValue", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "addedValue",
+        "type": "uint256"
+      }
     ],
     "name": "increaseAllowance",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
     ],
     "name": "isAdmin",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "name",
-    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
     "name": "proposals",
     "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "commit",
+        "type": "bytes32"
+      },
       {
         "internalType": "uint40",
         "name": "placeBlockNumber",
@@ -292,8 +447,11 @@
         "name": "status",
         "type": "uint8"
       },
-      { "internalType": "uint256", "name": "id", "type": "uint256" },
-      { "internalType": "address", "name": "proposer", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "proposer",
+        "type": "address"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -308,48 +466,102 @@
   {
     "inputs": [],
     "name": "signer",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "symbol",
-    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "totalSupply",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "recipient", "type": "address" },
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "transfer",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "sender", "type": "address" },
-      { "internalType": "address", "name": "recipient", "type": "address" },
-      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
     "name": "transferFrom",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
     "name": "transferOwnership",
     "outputs": [],
@@ -363,17 +575,29 @@
         "name": "commitLastBlock",
         "type": "uint256"
       },
-      { "internalType": "uint256", "name": "commitId", "type": "uint256" },
-      { "internalType": "bytes", "name": "signature", "type": "bytes" }
+      {
+        "internalType": "bytes32",
+        "name": "commit",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes",
+        "name": "signature",
+        "type": "bytes"
+      }
     ],
-    "name": "commit",
+    "name": "commitProposal",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "commitId", "type": "uint256" }
+      {
+        "internalType": "bytes32",
+        "name": "commit",
+        "type": "bytes32"
+      }
     ],
     "name": "getProposal",
     "outputs": [
@@ -382,15 +606,27 @@
         "name": "",
         "type": "uint8"
       },
-      { "internalType": "uint40", "name": "", "type": "uint40" },
-      { "internalType": "address", "name": "", "type": "address" }
+      {
+        "internalType": "uint40",
+        "name": "",
+        "type": "uint40"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "commitId", "type": "uint256" }
+      {
+        "internalType": "bytes32",
+        "name": "commit",
+        "type": "bytes32"
+      }
     ],
     "name": "approveProposal",
     "outputs": [],
@@ -399,7 +635,11 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "commitId", "type": "uint256" }
+      {
+        "internalType": "bytes32",
+        "name": "commit",
+        "type": "bytes32"
+      }
     ],
     "name": "rejectProposal",
     "outputs": [],
@@ -408,7 +648,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
     ],
     "name": "setSigner",
     "outputs": [],
@@ -417,7 +661,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
     ],
     "name": "addAdmin",
     "outputs": [],
@@ -426,7 +674,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "account", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
     ],
     "name": "removeAdmin",
     "outputs": [],

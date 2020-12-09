@@ -1,6 +1,9 @@
-type ExampleEntity @entity {
+type Proposal @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  spender: Bytes! # address
+  placeBlockNumber: String!
+  status: Int! 
+  proposer: Bytes! # address
+  timeCommitted: String!
+  admin: Bytes # address
+  timeAdmin: String
 }
