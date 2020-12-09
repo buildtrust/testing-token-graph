@@ -1,0 +1,44 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: TestingToken
+    network: kovan
+    source:
+      address: "0x3Bc4b3B16a2CA4afe135d1084cb5d6556A3c2f66"
+      abi: TestingToken
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.2
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Approved
+        - Commit
+        - MemberAdded
+        - MemberRemoved
+        - OwnershipTransferred
+        - Rejected
+        - Transfer
+      abis:
+        - name: TestingToken
+          file: ./abis/TestingToken.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Approved(uint256,indexed address)
+          handler: handleApproved
+        - event: Commit(uint256)
+          handler: handleCommit
+        - event: MemberAdded(indexed address,indexed address)
+          handler: handleMemberAdded
+        - event: MemberRemoved(indexed address,indexed address)
+          handler: handleMemberRemoved
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Rejected(uint256,indexed address)
+          handler: handleRejected
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
