@@ -42,6 +42,32 @@ export class Proposal extends Entity {
     this.set("id", Value.fromString(value));
   }
 
+  get txHashCommitted(): Bytes {
+    let value = this.get("txHashCommitted");
+    return value.toBytes();
+  }
+
+  set txHashCommitted(value: Bytes) {
+    this.set("txHashCommitted", Value.fromBytes(value));
+  }
+
+  get txHashAdmined(): Bytes | null {
+    let value = this.get("txHashAdmined");
+    if (value === null) {
+      return null;
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set txHashAdmined(value: Bytes | null) {
+    if (value === null) {
+      this.unset("txHashAdmined");
+    } else {
+      this.set("txHashAdmined", Value.fromBytes(value as Bytes));
+    }
+  }
+
   get placeBlockNumber(): string {
     let value = this.get("placeBlockNumber");
     return value.toString();

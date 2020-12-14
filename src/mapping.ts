@@ -14,12 +14,14 @@ export function handleApproved(event: Approved): void {
     proposal.status = 1;
     proposal.admin = event.params.caller;
     proposal.timeAdmin = event.block.timestamp;
+    proposal.txHashAdmined = event.transaction.hash;
     proposal.save();
   }
 }
 
 export function handleCommit(event: Commit): void {
   let proposal = new Proposal(event.params.commit.toHex())
+  proposal.txHashCommitted = event.transaction.hash;
   proposal.placeBlockNumber = event.params.placeBlockNumber.toString();
   proposal.status = event.params.status;
   proposal.proposer = event.params.proposer;
@@ -34,6 +36,7 @@ export function handleRejected(event: Rejected): void {
     proposal.status = 2;
     proposal.admin = event.params.caller;
     proposal.timeAdmin = event.block.timestamp;
+    proposal.txHashAdmined = event.transaction.hash;
     proposal.save();
   }
 }

@@ -1,5 +1,7 @@
 type Proposal @entity {
   id: ID!
+  txHashCommitted: Bytes!
+  txHashAdmined: Bytes
   placeBlockNumber: String!
   status: Int! 
   proposer: Bytes! # address
